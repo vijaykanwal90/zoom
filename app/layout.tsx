@@ -16,7 +16,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider
+ <html lang="en">
+   <ClerkProvider
     appearance={{
       layout:{
 logoImageUrl:'/icons/yoom-logo.svg',
@@ -30,11 +31,13 @@ socialButtonsVariant:'iconButton'
         colorInputText:'#fff'
       }
     }}
-    >    <html lang="en">
+    >    
       <body className={`${inter.className} bg-dark-2`}>{children}
+      
       </body>
-    </html>
     </ClerkProvider>
+
+    </html>
 
   );
 }
