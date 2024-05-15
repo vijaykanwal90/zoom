@@ -1,14 +1,30 @@
-
+/* eslint-disable camelcase */
 "use client"
-import Image from "next/image"
-import HomeCard from "./HomeCard"
-import MeetingModal from "./MeetingModal"
-import { useState } from "react"
-import { useRouter } from "next/navigation"
-import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk"
-import { useUser } from "@clerk/nextjs"
+// import Image from "next/image"
+// import HomeCard from "./HomeCard"
+// import MeetingModal from "./MeetingModal"
+// import { useState } from "react"
+// import { useRouter } from "next/navigation"
+// import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk"
+// import { useUser } from "@clerk/nextjs"
+
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import Test from './Test';
+import HomeCard from './HomeCard';
+import MeetingModal from './MeetingModal';
+import { Call, useStreamVideoClient } from '@stream-io/video-react-sdk';
+import { useUser } from '@clerk/nextjs';
+import Loader from './Loader';
+// import { Textarea } from './ui/textarea';
+// import ReactDatePicker from 'react-datepicker';
+// import { useToast } from './ui/use-toast';
+// import { Input } from './ui/input';
 const MeetingTypeList = () => {
-    const [meetingState, setMeetingState]= useState<'isScheduleMeeting'| 'isJoiningMeeting'|'isInstantMeeting'| undefined>(undefined)
+  const [meetingState, setMeetingState] = useState<
+  'isScheduleMeeting' | 'isJoiningMeeting' | 'isInstantMeeting' | undefined
+>();
+
     const router = useRouter()
     const {user} = useUser()
     const client = useStreamVideoClient()
@@ -19,6 +35,7 @@ const MeetingTypeList = () => {
     })
     const [callDetails,setCallDetails]= useState<Call>()
     const createMeeting= async()=>{
+      console.log("heelo")
       if(!client || !user){
         return ;
       }
@@ -48,6 +65,9 @@ const MeetingTypeList = () => {
         console.log(error + " error in meeting type list")
       }
     }
+    // const createHe= async()=>{
+    //   console.log("ehlow ")
+    // }
   return (
     <section className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
     <HomeCard
@@ -55,8 +75,9 @@ const MeetingTypeList = () => {
     title="New Meeting"
     description="Start an instant meeting"
     handleClick={()=> setMeetingState('isInstantMeeting'
-    )}
+  )}
     className='bg-orange-1'
+   
     />
     <HomeCard 
       img='/icons/join-meeting.svg'
@@ -92,6 +113,7 @@ className="text-center"
 buttonText="Start Meeting"
 handleClick= {createMeeting}
 />
+{/* <Test handleClick={createHe}/> */}
     </section>
   )
 }
