@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-"use client"
+"use client";
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -105,10 +105,8 @@ const MeetingTypeList = () => {
       className='bg-yellow-1'
       />
 <MeetingModel 
-isOpen={true}
-onClose= {()=>{
-
-}}
+isOpen={meetingState==='isInstantMeeting'}
+onClose= {()=>setMeetingState(undefined)}
 title="Start an Instant Meeting"
 className='text-center'
 buttonText="Start Meeting"
