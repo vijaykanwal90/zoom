@@ -4,7 +4,7 @@ const Loader = () => {
   return (
     <div className='flex-center h-screen w-full'>
       <Image src='/icons/loading-circle.svg'
-      alt='loading'
+      alt='Loading'
       height={50}
       width={50}/>
     </div>
