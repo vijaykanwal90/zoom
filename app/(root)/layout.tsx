@@ -3,7 +3,7 @@ import StreamVideoProvider from '@/providers/StreamClientProvider'
 const RootLayout = ({children}:Readonly<{children:ReactNode}>) => {
   return (
     <main>
-      <StreamVideoProvider>/
+      <StreamVideoProvider>
       {children}
 
       </StreamVideoProvider>

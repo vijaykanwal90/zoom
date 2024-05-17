@@ -11,12 +11,15 @@ import { useParams } from 'next/navigation';
 
 const MeetingPage = () => {
   const {id}= useParams();
-  const {user, isLoaded}= useUser();
+  const { isLoaded,user}= useUser();
   const [isSetupComplete, setIsSetupComplete] = useState(false)
   const {call , isCallLoading}= useGetCallById(id);
   console.log( "on page[id] of meeting " + id)
  if(!isLoaded || isCallLoading){
   return <Loader/>
+ }
+ if(!call){
+  <p className='text-center text-3xl font-bold text-white'>Call not found</p>
  }
 
     return (
@@ -25,9 +28,11 @@ const MeetingPage = () => {
   <StreamCall call={call}>
     <StreamTheme>
 {!isSetupComplete ?(
-<MeetingSetup/>
+<MeetingSetup setIsSetupComplete={setIsSetupComplete}/>
   ):<MeetingRoom/>
 }
+{/* <MeetingSetup/> */}
+{/* <div>Hello in meeeting page</div> */}
 </StreamTheme>
   </StreamCall>
 

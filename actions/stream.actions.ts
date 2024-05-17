@@ -10,7 +10,8 @@ import { StreamClient } from "@stream-io/node-sdk";
 //   } from '@stream-io/video-react-sdk';
 const apiKey = process.env.NEXT_PUBLIC_STREAM_API_KEY;
 const apiSecret= process.env.STREAM_SECRET_KEY;
-// console.log(apiKey + " vd" + apiSecret);
+console.log("hl")
+console.log(apiKey + " vd   " + apiSecret);
 export const tokenProvider = async()=>{
     const user = await currentUser();
     if(!user){
@@ -23,9 +24,9 @@ export const tokenProvider = async()=>{
         throw new Error('No API Secret')
     }
     const client = new StreamClient(apiKey, apiSecret)
-    const exp = Math.round(new Date().getTime() / 1000) + 60 * 60;
-    const issued= Math.floor(Date.now()/1000)-60;
-    const token = client.createToken(user.id,exp,issued);
-    // console.log(token)
+    const expirationTime = Math.floor(Date.now() / 1000) + 3600;
+    const issuedAt = Math.floor(Date.now() / 1000) - 60;
+    const token = client.createToken(user.id,expirationTime,issuedAt);
+    console.log(" tokem is " + token)
     return token;
 }

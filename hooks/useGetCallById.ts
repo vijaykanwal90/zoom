@@ -19,8 +19,9 @@ export const useGetCallById = (id: string | string[]) => {
         if (calls.length > 0) setCall(calls[0]);
 
         setIsCallLoading(false);
-        console.log("no erroer here")
+        // console.log("no erroer here")
       } catch (error) {
+        console.log("got an error")
         console.error(error);
         setIsCallLoading(false);
       }
