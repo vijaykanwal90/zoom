@@ -3,7 +3,7 @@ import { VideoPreview, useCall } from '@stream-io/video-react-sdk'
 import React, { useEffect, useState } from 'react'
 
 const MeetingSetup = () => {
-    const [isMicCamToggledOn,setIsMicCamToggledOn]= useState(false)
+    const [isMicCamToggledOn,setIsMicCamToggledOn]= useState(true)
     const call= useCall();
 console.log(call)
 
@@ -31,7 +31,7 @@ console.log(call)
     <div className='flex h-screen w-full flox-col items-center justify-center gap-3 text-white '>
       <h1 className='text-2xl font-bold'></h1>
       <VideoPreview/>
-      {/* <div>helo</div> */}
+      <div>helo</div>
     </div>
   )
 }

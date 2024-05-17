@@ -14,10 +14,10 @@ const MeetingPage = () => {
   const {user, isLoaded}= useUser();
   const [isSetupComplete, setIsSetupComplete] = useState(false)
   const {call , isCallLoading}= useGetCallById(id);
-  // console.log(id)
-//  if(!isLoaded || isCallLoading){
-//   return <Loader/>
-//  }
+  console.log( "on page[id] of meeting " + id)
+ if(!isLoaded || isCallLoading){
+  return <Loader/>
+ }
 
     return (
       
