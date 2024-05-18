@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui/toaster"
-import '@stream-chat-react/dist/css/v2/globals.css';
+// import '@stream-chat-react/dist/css/v2/globals.css';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

@@ -1,5 +1,7 @@
 "use client"
 import React, { useState } from 'react'
+import '@stream-io/video-react-sdk/dist/css/styles.css';
+
 import {useUser} from '@clerk/nextjs'
 import MeetingRoom from '@/components/MeetingRoom';
 // import { StreamCall } from '@stream-io/node-sdk';
