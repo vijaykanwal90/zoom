@@ -6,28 +6,49 @@ export const useGetCalls= ()=>{
     const [isLoading,setIsLoading]= useState(false)
     const client = useStreamVideoClient()
     const {user } = useUser();
-
-    useEffect(()=>{
-        const loadCalls = async ()=>{
-            if(!client, || !user?>id ) return 
-            set
-
+     useEffect(()=>{
+        const loadCalls = async()=>{
+            if(!client || user?.id){
+                return ;
+            }
+            setIsLoading(true);
             try {
-                const {Calls} = await client.querryCalls();
-                sort:[{field:'starts_at',direction :-1}]
-                filter_condtitions:{
-                    starts_at:{$exists:true},
-                    $or:[
-                        {created_by_user_id:user.id},
-                        {members:{$in:[user.id]}},
-
-                    ]
-                }
+                const {calls}= await client.queryCalls({
+                    sort:[{field:'starts_at',direction:-1}],
+                    filter_conditions:{
+                        starts_at:{$exists:true},
+                        $or:[
+                            {created_by_user_id:user?.id},
+                            {members:{$in:[user?.id]}},
+                        ]
+                    }
+                });
+                setCalls(calls)
             } catch (error) {
-                console.log(error)
+                console.log(Error + " error while getting the calls")
             }
             finally{
-                setIsLoading(false);
+                setIsLoading(false)
             }
-    } loadCalls()),[])
+        }
+        loadCalls()
+
+     },[client,user?.id]);
+
+     const now = new Date();
+
+const endedCalls = calls.filter(({state:{startsAt,endedAt}}:Call)=>{
+    return (startsAt && new Date(startsAt)<now || !!endedAt)})
+}
+const upcomingCalls = calls.filter(({state:{startsAt}} :Call)=>{
+    return startsAt && new Date(startsAt)>now
+});
+// const recordings;
+return {
+    endedCalls,
+    upcomingCalls,
+    recordings:calls,
+    isLoading,
+}
+
 }
