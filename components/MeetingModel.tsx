@@ -1,15 +1,11 @@
+"use client"
 import React ,{ReactNode}from 'react'
 import {
     Dialog,
     DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
   } from "@/components/ui/dialog"
   import Image from 'next/image';
 import { cn } from '@/lib/utils';
-// import { Button } from '@mui/material';
 import { Button } from './ui/button';
 interface MeetingModalProps{
     isOpen:boolean;

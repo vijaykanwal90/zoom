@@ -11,7 +11,7 @@ const MeetingSetup = ({setIsSetupComplete}:{
     const call= useCall();
 console.log(call)
 
-    console.log( " heo w" + call)
+    // console.log( " heo w" + call)
     if(!call){
       throw new Error(
         'useStreamCall must be used within a StreamCall component.',
