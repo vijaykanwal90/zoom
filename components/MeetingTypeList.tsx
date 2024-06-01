@@ -281,7 +281,7 @@ const MeetingTypeList = () => {
         img="/icons/join-meeting.svg"
         title="Join Meeting"
         description="via invitation link"
-        className="bg-blue-1"
+        className="bg-orange-1"
         handleClick={() => setMeetingState('isJoiningMeeting')}
       />
       <HomeCard
@@ -311,7 +311,7 @@ const MeetingTypeList = () => {
               Add a description
             </label>
             <Textarea
-              className="border-none bg-dark-3 focus-visible:ring-0 focus-visible:ring-offset-0"
+              className="border-none bg-dark-3 focus-visible:ring-0 focus-visible:ring-offset-0 text-black"
               onChange={(e) =>
                 setValues({ ...values, description: e.target.value })
               }
@@ -329,7 +329,7 @@ const MeetingTypeList = () => {
               timeIntervals={15}
               timeCaption="time"
               dateFormat="MMMM d, yyyy h:mm aa"
-              className="w-full rounded bg-dark-3 p-2 focus:outline-none"
+              className="w-full rounded bg-dark-3 text-black p-2 focus:outline-none"
             />
           </div>
         </MeetingModal>

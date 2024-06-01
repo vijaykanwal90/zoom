@@ -1,7 +1,7 @@
 'use client';
 import { Call, CallRecording } from "@stream-io/video-react-sdk";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useGetCalls } from "@/hooks/useGetCall";
 import MeetingCard from "./MeetingCard";
 import Loader from "./Loader";
@@ -37,6 +37,17 @@ const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
         return '';
     }
   }
+  useEffect(()=>{
+  
+    const fetchRecordings= async()=>{
+        const callData = await Promise.all(callRecordings?.map((meeting) =>meeting.queryRecordings())?? [])
+        const recordings = callData.filter(call => call?.recordings.length > 0).flatMap( call => call?.recordings)
+        setRecordings(recordings)
+    }
+    if(type==='recordings'){
+      fetchRecordings()
+    }
+  },[type,callRecordings])
   const calls = getCalls();
   // console.log(calls.length)
   const noCallsMessage = getNoCallsMessage();
@@ -55,8 +66,11 @@ const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
 
           }
           title={
-            (meeting as Call).state.custom.description.substring(0, 20) || 'No description'
+            (meeting as Call).state?.custom.description.substring(0, 26) ||  
+            ((meeting as CallRecording).filename?.substring(0,20) || 'No description')
           }
+          // (meeting as Call).state?.custom.description.substring(0, 26) ||  meeting.filename.substring(0,20)|| 'No description'
+          // }
           date={(meeting as Call).state?.startsAt?.toLocaleString() || (meeting as CallRecording).start_time?.toLocaleString()}
           isPreviousMeeting={type === 'ended'}
           buttonIcon1={type === 'recordings' ? '/icons/play.svg' : undefined}
