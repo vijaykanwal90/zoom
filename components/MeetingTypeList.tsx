@@ -210,7 +210,7 @@ import Loader from './Loader';
 import { Textarea } from './ui/textarea';
 import ReactDatePicker from 'react-datepicker';
 import { useToast } from './ui/use-toast';
-// import { Input } from './ui/input';
+import { Input } from './ui/input';
 
 const initialValues = {
   dateTime: new Date(),
@@ -294,7 +294,7 @@ const MeetingTypeList = () => {
       <HomeCard
         img="/icons/recordings.svg"
         title="View Recordings"
-        description="Meeting Recordings"
+        description="Check out Recordings"
         className="bg-yellow-1"
         handleClick={() => router.push('/recordings')}
       />
@@ -372,6 +372,21 @@ const MeetingTypeList = () => {
         buttonText="Start Meeting"
         handleClick={createMeeting}
       />
+
+
+<MeetingModal
+        isOpen={meetingState === 'isJoiningMeeting'}
+        onClose={() => setMeetingState(undefined)}
+        title="Start an Instant Meeting"
+        className="text-center"
+        buttonText="Join Meeting"
+        handleClick={()=>router.push(values.link)}
+      >
+        <Input 
+        placeholder='Meeting Link'
+        className='border-none bg-dark-3 text-black focus-visible:ring focus-visible:offset-0'
+        onChange={(e)=> setValues({...values,link:e.target.value})}/>
+      </MeetingModal>
     </section>
   );
 };

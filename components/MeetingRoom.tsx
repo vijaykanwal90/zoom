@@ -1,6 +1,7 @@
 import { cn } from '@/lib/utils'
 import { CallControls, CallParticipantsList, CallStatsButton, CallingState, PaginatedGridLayout, SpeakerLayout, useCallStateHooks } from '@stream-io/video-react-sdk'
 import React from 'react'
+import {useRouter} from 'next/navigation'
 import { useState } from 'react'
 import {
   DropdownMenu,
@@ -17,6 +18,7 @@ import EndCallButton from './EndCallButton'
 type CallLayoutType = 'Grid' | 'Speaker-Left' | 'Speaker-Right'
 
 const MeetingRoom = () => {
+  const router = useRouter()
   const searchParams = useSearchParams();
   const [layout, setLayout] = useState<CallLayoutType>('Speaker-Right')
   const [showParticipants, setShowParticipant] = useState(false)
@@ -52,7 +54,9 @@ if(callingState !==CallingState.JOINED) return
       </div>
 
       <div className='fixed bottom-0 flex w-full items-center justify-center gap-5 flex-wrap'>
-        <CallControls />
+        <CallControls  onLeave={()=>{
+          router.push('/')
+        }}/>
 
 
         <DropdownMenu>
