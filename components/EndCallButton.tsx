@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import { useCall, useCallStateHooks, useCalls } from '@stream-io/video-react-sdk';
+import { useCall, useCallStateHooks } from '@stream-io/video-react-sdk';
 import { Button } from './ui/button';
 import { useRouter } from 'next/navigation';
 const EndCallButton = () => {
