@@ -67,7 +67,7 @@ const MeetingTypeList = () => {
   if (!client || !user) return <Loader />;
 
   // const meetingLink = `/meeting/${callDetail?.id}`;
-  // const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${callDetail?.id}`;
+  const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${callDetail?.id}`;
   // console.log("meeting link" + meetingLink);
  const joinMeeting =()=>{
    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL?.trim();
