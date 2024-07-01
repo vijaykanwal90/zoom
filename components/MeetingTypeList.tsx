@@ -66,7 +66,10 @@ const MeetingTypeList = () => {
 
   if (!client || !user) return <Loader />;
 
+  // const meetingLink = `/meeting/${callDetail?.id}`;
   const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${callDetail?.id}`;
+  console.log("meeting link" + meetingLink);
+
 
   return (
     <section className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
@@ -158,11 +161,11 @@ const MeetingTypeList = () => {
         buttonText="Join Meeting"
         handleClick={() => router.push(values.link)}
       >
-        {/* <Input
+        <Input
           placeholder="Meeting link"
           onChange={(e) => setValues({ ...values, link: e.target.value })}
-          className="border-none bg-dark-3 focus-visible:ring-0 focus-visible:ring-offset-0"
-        /> */}
+          className="border-none text-black bg-dark-3 focus-visible:ring-0 focus-visible:ring-offset-0"
+        />
       </MeetingModal>
 
       <MeetingModal
@@ -175,19 +178,19 @@ const MeetingTypeList = () => {
       />
 
 
-<MeetingModal
+      {/* <MeetingModal
         isOpen={meetingState === 'isJoiningMeeting'}
         onClose={() => setMeetingState(undefined)}
-        title="Start an Instant Meeting"
+        title="Join Meeting"
         className="text-center"
         buttonText="Join Meeting"
-        handleClick={()=>router.push(values.link)}
+        handleClick={() => router.push(values.link)}
       >
-        <Input 
-        placeholder='Meeting Link'
-        className='border-none bg-dark-3 text-black focus-visible:ring focus-visible:offset-0'
-        onChange={(e)=> setValues({...values,link:e.target.value})}/>
-      </MeetingModal>
+        <Input
+          placeholder='Meeting Link'
+          className='border-none bg-dark-3 text-black focus-visible:ring focus-visible:offset-0'
+          onChange={(e) => setValues({ ...values, link: e.target.value })} />
+      </MeetingModal> */}
     </section>
   );
 };
