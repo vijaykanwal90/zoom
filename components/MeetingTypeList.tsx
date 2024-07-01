@@ -70,8 +70,11 @@ const MeetingTypeList = () => {
   const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${callDetail?.id}`;
   // console.log("meeting link" + meetingLink);
  const joinMeeting =()=>{
+  console.log("in join meeting ")
    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL?.trim();
    const trimmedLink = values.link.trim();
+  console.log(baseUrl)
+console.log(trimmedLink)
    if(!baseUrl){
     return;
    }
