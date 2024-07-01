@@ -70,23 +70,28 @@ const MeetingTypeList = () => {
   const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${callDetail?.id}`;
   // console.log("meeting link" + meetingLink);
  const joinMeeting =()=>{
+  console.log(values.link)
   console.log("in join meeting ")
    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL?.trim();
    const trimmedLink = values.link.trim();
   console.log(baseUrl)
 console.log(trimmedLink)
    if(!baseUrl){
+    console.log("object")
     return;
    }
    if(
+    
 
     trimmedLink.startsWith(baseUrl) || trimmedLink.startsWith("http://")||
     trimmedLink.startsWith("https://")
    ){
-    router.push(trimmedLink)
+console.log("in the if part")
+    router.push(`/meeting/${callDetail?.id}`)
 
    }
    else {
+    console.log("going in else part")
     router.push(`${baseUrl}/meeting/${trimmedLink}`)
    }
 
