@@ -10,7 +10,7 @@ import "react-datepicker/dist/react-datepicker.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "ZOOM",
+  title: "STREAM",
   description: "Video Calling App",
   icons:{
     icon:'/icon/logo.svg'
@@ -27,7 +27,7 @@ export default function RootLayout({
       <ClerkProvider
         appearance={{
           layout: {
-            logoImageUrl: '/icons/yoom-logo.svg',
+            logoImageUrl: '/icons/stream_logo.svg',
             socialButtonsVariant: 'iconButton'
           },
           variables: {

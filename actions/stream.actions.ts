@@ -10,7 +10,7 @@ import { StreamClient } from "@stream-io/node-sdk";
 //   } from '@stream-io/video-react-sdk';
 const apiKey = process.env.NEXT_PUBLIC_STREAM_API_KEY;
 const apiSecret= process.env.STREAM_SECRET_KEY;
-console.log("hl")
+// console.log("hl")
 console.log(apiKey + " vd   " + apiSecret);
 export const tokenProvider = async()=>{
     const user = await currentUser();
