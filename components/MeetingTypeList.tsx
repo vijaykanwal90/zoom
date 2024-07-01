@@ -87,7 +87,7 @@ console.log(trimmedLink)
     trimmedLink.startsWith("https://")
    ){
 console.log("in the if part")
-    router.push(`/meeting/${callDetail?.id}`)
+    router.push(`https://zoom-pi-one.vercel.app/meeting/${callDetail?.id}`)
 
    }
    else {
