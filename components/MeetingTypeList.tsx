@@ -76,6 +76,8 @@ const MeetingTypeList = () => {
    const trimmedLink = values.link.trim();
   console.log(baseUrl)
 console.log(trimmedLink)
+console.log("after this")
+// console.log(initialValues.link)
    if(!baseUrl){
     console.log("object")
     return;
@@ -87,7 +89,8 @@ console.log(trimmedLink)
     trimmedLink.startsWith("https://")
    ){
 console.log("in the if part")
-    router.push(`https://zoom-pi-one.vercel.app/meeting/${callDetail?.id}`)
+    router.push(`${baseUrl}/meeting/${callDetail?.id}`)
+    console.log("pushed")
 
    }
    else {
@@ -191,6 +194,7 @@ console.log("in the if part")
         <Input
           placeholder="Meeting link"
           onChange={(e) => setValues({ ...values, link: e.target.value })}
+          
           className="border-none text-black bg-dark-3 focus-visible:ring-0 focus-visible:ring-offset-0"
         />
       </MeetingModal>
