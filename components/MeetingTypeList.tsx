@@ -89,7 +89,8 @@ console.log("after this")
     trimmedLink.startsWith("https://")
    ){
 console.log("in the if part")
-    router.push(`${baseUrl}/meeting/${callDetail?.id}`)
+    // router.push(`${baseUrl}/meeting/${callDetail?.id}`)
+    router.push(trimmedLink)
     console.log("pushed")
 
    }
