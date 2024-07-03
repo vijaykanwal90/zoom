@@ -69,37 +69,36 @@ const MeetingTypeList = () => {
   // const meetingLink = `/meeting/${callDetail?.id}`;
   const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${callDetail?.id}`;
   // console.log("meeting link" + meetingLink);
- const joinMeeting =()=>{
-  console.log(values.link)
-  console.log("in join meeting ")
-   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL?.trim();
-   const trimmedLink = values.link.trim();
-  console.log(baseUrl)
-console.log(trimmedLink)
-console.log("after this")
-// console.log(initialValues.link)
-   if(!baseUrl){
-    console.log("object")
-    return;
-   }
-   if(
+//  const joinMeeting =()=>{
+//   console.log(values.link)
+//   console.log("in join meeting ")
+//    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL?.trim();
+//    const trimmedLink = values.link.trim();
+//   console.log(baseUrl)
+// console.log(trimmedLink)
+// console.log("after this")
+// // console.log(initialValues.link)
+//    if(!baseUrl){
+//     console.log("object")
+//     return;
+//    }
+//    if(
     
 
     trimmedLink.startsWith(baseUrl) || trimmedLink.startsWith("http://")||
     trimmedLink.startsWith("https://")
    ){
 console.log("in the if part")
-    // router.push(`${baseUrl}/meeting/${callDetail?.id}`)
-    router.push(trimmedLink)
+    router.push(`${baseUrl}/meeting/${callDetail?.id}`)
     console.log("pushed")
 
-   }
-   else {
-    console.log("going in else part")
-    router.push(`${baseUrl}/meeting/${trimmedLink}`)
-   }
+//    }
+//    else {
+//     console.log("going in else part")
+//     router.push(`${baseUrl}/meeting/${trimmedLink}`)
+//    }
 
- }
+//  }
 
   return (
     <section className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
@@ -190,7 +189,7 @@ console.log("in the if part")
         className="text-center"
         buttonText="Join Meeting"
         // handleClick={() => router.push(values.link)}
-        handleClick={joinMeeting}
+        handleClick={()=>router.push(values.link)}
       >
         <Input
           placeholder="Meeting link"
