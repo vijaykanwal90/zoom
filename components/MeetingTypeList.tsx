@@ -85,12 +85,12 @@ const MeetingTypeList = () => {
 //    if(
     
 
-    trimmedLink.startsWith(baseUrl) || trimmedLink.startsWith("http://")||
-    trimmedLink.startsWith("https://")
-   ){
-console.log("in the if part")
-    router.push(`${baseUrl}/meeting/${callDetail?.id}`)
-    console.log("pushed")
+//     trimmedLink.startsWith(baseUrl) || trimmedLink.startsWith("http://")||
+//     trimmedLink.startsWith("https://")
+//    ){
+// console.log("in the if part")
+//     router.push(`${baseUrl}/meeting/${callDetail?.id}`)
+//     console.log("pushed")
 
 //    }
 //    else {
