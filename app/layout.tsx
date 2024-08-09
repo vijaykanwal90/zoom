@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: "STREAM",
   description: "Video Calling App",
   icons:{
-    icon:'/icon/logo.svg'
+    icon:'/icon/stream_logo.svg'
   }
 };
 
