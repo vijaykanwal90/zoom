@@ -101,6 +101,8 @@ const MeetingTypeList = () => {
 
 //  }
  const joinMeeting = ()=>{
+  console.log("meeting link" + meetingLink);
+
   console.log("join meeting clicked")
  }
   return (
