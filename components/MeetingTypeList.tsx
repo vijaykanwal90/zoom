@@ -68,7 +68,8 @@ const MeetingTypeList = () => {
 
   // const meetingLink = `/meeting/${callDetail?.id}`;
   const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${callDetail?.id}`;
-  // console.log("meeting link" + meetingLink);
+
+  console.log("meeting link" + meetingLink);
 //  const joinMeeting =()=>{
 //   console.log(values.link)
 //   console.log("in join meeting ")
@@ -99,7 +100,9 @@ const MeetingTypeList = () => {
 //    }
 
 //  }
-
+ const joinMeeting = ()=>{
+  console.log("join meeting clicked")
+ }
   return (
     <section className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
       <HomeCard
@@ -189,7 +192,8 @@ const MeetingTypeList = () => {
         className="text-center"
         buttonText="Join Meeting"
         // handleClick={() => router.push(values.link)}
-        handleClick={()=>router.push(values.link)}
+        // handleClick={()=>router.push(values.link)}
+        handleClick={joinMeeting}
       >
         <Input
           placeholder="Meeting link"
