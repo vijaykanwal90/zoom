@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import HomeCard from './HomeCard';
-import MeetingModal from './MeetingModel';
+import MeetingModel from './MeetingModel';
 import { Call, useStreamVideoClient } from '@stream-io/video-react-sdk';
 import { useUser } from '@clerk/nextjs';
 import Loader from './Loader';
@@ -75,7 +75,7 @@ const MeetingTypeList = () => {
 //   console.log("in join meeting ")
 //    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL?.trim();
 //    const trimmedLink = values.link.trim();
-//   console.log(baseUrl)
+//   console.log(baseUrl)zoom-pi-one.vercel.app/meeting/fb8d3718-8fb9-4c93-ad7e-31f6ea1c75bb
 // console.log(trimmedLink)
 // console.log("after this")
 // // console.log(initialValues.link)
@@ -138,7 +138,7 @@ const MeetingTypeList = () => {
       />
 
       {!callDetail ? (
-        <MeetingModal
+        <MeetingModel
           isOpen={meetingState === 'isScheduleMeeting'}
           onClose={() => setMeetingState(undefined)}
           title="Create Meeting"
@@ -170,9 +170,9 @@ const MeetingTypeList = () => {
               className="w-full rounded bg-dark-3 text-black p-2 focus:outline-none"
             />
           </div>
-        </MeetingModal>
+        </MeetingModel>
       ) : (
-        <MeetingModal
+        <MeetingModel
           isOpen={meetingState === 'isScheduleMeeting'}
           onClose={() => setMeetingState(undefined)}
           title="Meeting Created"
@@ -187,7 +187,7 @@ const MeetingTypeList = () => {
         />
       )}
 
-      <MeetingModal
+      <MeetingModel
         isOpen={meetingState === 'isJoiningMeeting'}
         onClose={() => setMeetingState(undefined)}
         title="Type the link here"
@@ -203,9 +203,9 @@ const MeetingTypeList = () => {
           
           className="border-none text-black bg-dark-3 focus-visible:ring-0 focus-visible:ring-offset-0"
         />
-      </MeetingModal>
+      </MeetingModel>
 
-      <MeetingModal
+      <MeetingModel
         isOpen={meetingState === 'isInstantMeeting'}
         onClose={() => setMeetingState(undefined)}
         title="Start an Instant Meeting"
