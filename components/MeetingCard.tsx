@@ -37,7 +37,7 @@ const MeetingCard = ({
         <div className="flex justify-between">
           <div className="flex flex-col gap-2">
             <h1 className="text-2xl font-bold">{title}</h1>
-            <p className="text-base font-normal">{date}</p>
+            <p className="text-base font-normal">{}</p>
           </div>
         </div>
       </article>
