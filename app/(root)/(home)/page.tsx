@@ -4,9 +4,17 @@ import React from 'react'
 const Home = () => {
   const now   = new Date();
 
-  const time =now.toLocaleTimeString('en-US',{
-    hour:'2-digit',minute:'2-digit'
-  })
+  // const time =now.toLocaleTimeString('en-US',{
+  //   hour:'2-digit',minute:'2-digit'
+  // })
+  const nowUTC = new Date();
+
+// Format the time in UTC in 'en-US' 12-hour format with 2-digit hour and minute
+const time = nowUTC.toLocaleTimeString('en-US', {
+  hour: '2-digit',
+  minute: '2-digit',
+  timeZone: 'UTC',  // Specify UTC timezone
+});
   const date= (new Intl.DateTimeFormat('en-US',{
       dateStyle:'full'
   })).format(now);
