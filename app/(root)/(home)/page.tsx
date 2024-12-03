@@ -7,14 +7,16 @@ const Home = () => {
   // const time =now.toLocaleTimeString('en-US',{
   //   hour:'2-digit',minute:'2-digit'
   // })
-  const nowUTC = new Date();
+  // const now = new Date();
 
-// Format the time in UTC in 'en-US' 12-hour format with 2-digit hour and minute
-const time = nowUTC.toLocaleTimeString('en-US', {
-  hour: '2-digit',
-  minute: '2-digit',
-  timeZone: 'UTC',  // Specify UTC timezone
-});
+  // Use `Intl.DateTimeFormat` for better control over time formatting
+  const formatter = new Intl.DateTimeFormat('en-US', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: true // 12-hour format with AM/PM
+  });
+
+const time = formatter.format(now);
   const date= (new Intl.DateTimeFormat('en-US',{
       dateStyle:'full'
   })).format(now);
