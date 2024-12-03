@@ -1,5 +1,6 @@
 import MeetingTypeList from '@/components/MeetingTypeList';
 import React from 'react'
+import moment from "moment-timezone"
 // import Sidebar from '@/components/Sidebar'
 const Home = () => {
   const now   = new Date();
@@ -10,6 +11,8 @@ const Home = () => {
   // const now = new Date();
 
   // Use `Intl.DateTimeFormat` for better control over time formatting
+  const currentTimeInIST = moment().tz('Asia/Kolkata').format('hh:mm A');
+
   const formatter = new Intl.DateTimeFormat('en-US', {
     hour: '2-digit',
     minute: '2-digit',
@@ -30,7 +33,7 @@ const time = formatter.format(now);
 
 
   <div className='flex flex-col gap-2'></div>
-<h1 className='text-4xl font-extrabold lg:text-7xl'>{time} </h1>
+<h1 className='text-4xl font-extrabold lg:text-7xl'>{currentTimeInIST} </h1>
 <p className='text-lg font-medium text-sky-1 lg:text-2xl'> {date}</p>
   </div>
 
