@@ -68,43 +68,37 @@ const MeetingTypeList = () => {
 
   // const meetingLink = `/meeting/${callDetail?.id}`;
   const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${callDetail?.id}`;
+  console.log("meeting link " + meetingLink);
 
-  console.log("meeting link" + meetingLink);
-//  const joinMeeting =()=>{
-//   console.log(values.link)
-//   console.log("in join meeting ")
-//    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL?.trim();
-//    const trimmedLink = values.link.trim();
-//   console.log(baseUrl)zoom-pi-one.vercel.app/meeting/fb8d3718-8fb9-4c93-ad7e-31f6ea1c75bb
-// console.log(trimmedLink)
-// console.log("after this")
-// // console.log(initialValues.link)
-//    if(!baseUrl){
-//     console.log("object")
-//     return;
-//    }
-//    if(
+
+
+
+  
+    const joinMeeting = () => {
+      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || '';  // Ensure this is set to your server's base URL
+      let newLink = values.link.trim();  // Remove leading/trailing spaces
     
+      // If the link already includes the server URL, we just need the path part
+      if (newLink && (newLink.startsWith("zoom-pi-one.vercel.app") || newLink.startsWith("https://"))) {
+        // Make sure the link does not have the server URL part again
+        if (newLink && newLink.startsWith(baseUrl)) {
+          // If it starts with base URL, just use the path
+          newLink = newLink.replace(baseUrl, '');
+        }
+        // Now the link will be just the path part, so we can navigate to it
+        router.push(newLink);
+      } else {
+        // If the link doesn't include the server URL, prepend the base URL
+        router.push(`${baseUrl}${newLink}`);
+      }
+    };
+    
+  
+  //  const joinMeeting = ()=>{
+  //   console.log("meeting link" + meetingLink);
 
-//     trimmedLink.startsWith(baseUrl) || trimmedLink.startsWith("http://")||
-//     trimmedLink.startsWith("https://")
-//    ){
-// console.log("in the if part")
-//     router.push(`${baseUrl}/meeting/${callDetail?.id}`)
-//     console.log("pushed")
-
-//    }
-//    else {
-//     console.log("going in else part")
-//     router.push(`${baseUrl}/meeting/${trimmedLink}`)
-//    }
-
-//  }
- const joinMeeting = ()=>{
-  console.log("meeting link" + meetingLink);
-
-  console.log("join meeting clicked")
- }
+  //   console.log("join meeting clicked")
+  //  }
   return (
     <section className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
       <HomeCard
@@ -196,11 +190,16 @@ const MeetingTypeList = () => {
         // handleClick={() => router.push(values.link)}
         // handleClick={()=>router.push(values.link)}
         handleClick={joinMeeting}
+        // handleClick={() =>
+        //   if(values.link.startsWith("zoom-pi-one.vercel.app") || values.link.startsWith("https://"))
+        //   const newLink = values.link;
+        //   router.push(`/${values.link}`)}
+
       >
         <Input
           placeholder="Meeting link"
           onChange={(e) => setValues({ ...values, link: e.target.value })}
-          
+
           className="border-none text-black bg-dark-3 focus-visible:ring-0 focus-visible:ring-offset-0"
         />
       </MeetingModel>
